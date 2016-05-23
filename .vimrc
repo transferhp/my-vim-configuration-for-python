@@ -48,6 +48,19 @@ Plugin 'AutoClose'
 " Better rainbow parenthese
 Plugin 'kien/rainbow_parentheses.vim'
 
+" Code skeleton for vim
+Plugin 'noahfrederick/vim-skeleton'
+
+" Track the engine.
+Plugin 'SirVer/ultisnips'
+
+" Snippets are separated from the engine. Add this if you want them:
+Plugin 'honza/vim-snippets'
+
+" Supertab Plugin
+Plugin 'ervandew/supertab'
+
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -86,15 +99,15 @@ else
     colorscheme zenburn
 endif
 
+" Full color support in vim
+set t_Co=256
+
 " Syntax highlight
 let python_highlight_all=1
 syntax on
 
 " View docstrings of folded code
 let g:SimpylFold_docstring_preview=1
-
-" Auto brace match
-set showmatch
 
 " python with virtualenv support
 py << EOF
@@ -117,10 +130,6 @@ set showtabline=2 " Always display the tabline, even if there is only one tab
 map <C-n> :NERDTreeToggle<CR>
 " Hide .pyc file in file browsing
 let NERDTreeIgnore=['\.pyc$', '\~$']
-
-
-" Full color support in vim
-set t_Co=256
 
 " Setting for parenthese display
 let g:rbpt_colorpairs = [
@@ -152,3 +161,19 @@ au Syntax * RainbowParenthesesLoadBraces
 
 " Enable mouse on all modes
 set mouse=a
+
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
+let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
+let g:ycm_complete_in_comments = 1 " Completion in comments
+let g:ycm_complete_in_strings = 1 " Completion in string
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
