@@ -48,6 +48,19 @@ Plugin 'AutoClose'
 " Better rainbow parenthese
 Plugin 'kien/rainbow_parentheses.vim'
 
+" Code skeleton for vim
+Plugin 'noahfrederick/vim-skeleton'
+
+" Track the engine.
+Plugin 'SirVer/ultisnips'
+
+" Snippets are separated from the engine. Add this if you want them:
+Plugin 'honza/vim-snippets'
+
+" Supertab Plugin
+Plugin 'ervandew/supertab'
+
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -86,6 +99,9 @@ else
     colorscheme zenburn
 endif
 
+" Full color support in vim
+set t_Co=256
+
 " Syntax highlight
 let python_highlight_all=1
 syntax on
@@ -114,10 +130,6 @@ set showtabline=2 " Always display the tabline, even if there is only one tab
 map <C-n> :NERDTreeToggle<CR>
 " Hide .pyc file in file browsing
 let NERDTreeIgnore=['\.pyc$', '\~$']
-
-
-" Full color support in vim
-set t_Co=256
 
 " Setting for parenthese display
 let g:rbpt_colorpairs = [
